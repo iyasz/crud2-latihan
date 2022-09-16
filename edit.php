@@ -2,6 +2,21 @@
 
 $conn = mysqli_connect('localhost', 'root', '', 'crudlog');
 
+$id = $_GET['id'];
+
+$datas = $conn->query("SELECT * FROM anggota");
+
+$data = mysqli_fetch_assoc($datas);
+
+if(isset($_POST['submit'])){
+    $nama = htmlspecialchars($_POST['nama']);
+    $username = htmlspecialchars($_POST['username']);
+    $telepon = htmlspecialchars($_POST['telepon']);
+    $alamat = htmlspecialchars($_POST['alamat']);
+
+    $conn->query("UPDATE anggota SET nama = '$nama', username = '$username', telepon = '$telepon', alamat = '$alamat' WHERE id = '$id'");
+}
+
 
 // echo "<script>location.replace('input.php');</script>";
 
@@ -30,19 +45,19 @@ $conn = mysqli_connect('localhost', 'root', '', 'crudlog');
                             </div>
                             <div class="mb-3">
                                 <label for="nama">Nama</label>
-                                <input autocomplete="off" type="text" required name="nama" value="<?= $data['nama'] ?>" placeholder="" class="form-control" id="nama">
+                                <input autocomplete="off" type="text" required name="nama" placeholder="" class="form-control" id="nama">
                             </div>
                             <div class="mb-3">
                                 <label for="username">Username</label>
-                                <input type="text" autocomplete="off" name="username" required placeholder="" value="<?= $data['username'] ?>" class="form-control" id="username">
+                                <input type="text" autocomplete="off" name="username" required placeholder="" class="form-control" id="username">
                             </div>
                             <div class="mb-3">
                                 <label for="telp">No Telp</label>
-                                <input type="number" name="telepon" autocomplete="off" required placeholder="" value="<?= $data['telepon'] ?>" class="form-control" id="telp">
+                                <input type="number" name="telepon" autocomplete="off" required placeholder=""  class="form-control" id="telp">
                             </div>
                             <div class="mb-3">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" name="alamat" required autocomplete="off" placeholder="" value="<?= $data['alamat'] ?>" class="form-control" id="alamat">
+                                <input type="text" name="alamat" required autocomplete="off" placeholder="" class="form-control" id="alamat">
                             </div>
                             <div class="footer">
                                 <button class="btn btn-primary" name="submit" type="submit">Submit</button>

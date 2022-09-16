@@ -29,11 +29,11 @@ if (isset($_POST['submit'])) {
     }
 }
 
-if(isset($_POST['delete'])){
+if (isset($_POST['delete'])) {
     $id = htmlspecialchars($_POST['id']);
 
     $delete = $conn->query("DELETE FROM anggota where id = '$id' ");
-    if($delete){
+    if ($delete) {
         $del = 1;
         echo '<script>
         setInterval(function () {
@@ -62,15 +62,16 @@ if(isset($_POST['delete'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Bootstrap demo</title>
+    <title>CRUD</title>
 </head>
 
 <body>
     <div class="container mt-5">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ">
             <div class="col-md-6">
-                <div class="card shadow">
+                <div class="card shadow animate__animated animate__fadeInRight" >
                     <div class="card-body">
                         <form action="" method="post">
                             <div class="header">
@@ -103,7 +104,7 @@ if(isset($_POST['delete'])){
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-lg-10">
-                <div class="card shadow">
+                <div class="card shadow animate__animated animate__fadeInRight">
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>

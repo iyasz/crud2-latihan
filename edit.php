@@ -8,26 +8,21 @@ $datas = $conn->query("SELECT * FROM anggota WHERE id = '$id'");
 
 $data = mysqli_fetch_assoc($datas);
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $nama = htmlspecialchars($_POST['nama']);
     $username = htmlspecialchars($_POST['username']);
     $telepon = htmlspecialchars($_POST['telepon']);
     $alamat = htmlspecialchars($_POST['alamat']);
 
     $update = $conn->query("UPDATE anggota SET nama = '$nama', username = '$username', telepon = '$telepon', alamat = '$alamat' WHERE id = '$id'");
-    if($update){
-        if (isset($suc)) {
-            echo "<script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil Menyimpan Data',
-                showConfirmButton: false,
-                timer: 1500
-              })
-                </script>";
-        } else {
-            die;
-        }
+    if ($update) {
+
+        $suc = 1;
+        echo '<script>
+        setInterval(function () {
+            window.location.href="index.php"
+        }, 1000);
+    </script>';
     }
 }
 
@@ -67,7 +62,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="mb-3">
                                 <label for="telp">No Telp</label>
-                                <input type="number" value="<?= $data['telepon'] ?>" name="telepon" autocomplete="off" required placeholder=""  class="form-control" id="telp">
+                                <input type="number" value="<?= $data['telepon'] ?>" name="telepon" autocomplete="off" required placeholder="" class="form-control" id="telp">
                             </div>
                             <div class="mb-3">
                                 <label for="alamat">Alamat</label>
@@ -85,8 +80,8 @@ if(isset($_POST['submit'])){
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <?php 
-    
+    <?php
+
     if (isset($suc)) {
         echo "<script>
         Swal.fire({

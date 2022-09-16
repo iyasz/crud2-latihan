@@ -2,15 +2,36 @@
 
 $conn = mysqli_connect('localhost', 'root', '', 'crudlog');
 
+$select = $conn->query("SELECT * FROM anggota");
+
+if (isset($_POST['submit'])) {
+    $nama = htmlspecialchars($_POST['nama']);
+    $username = htmlspecialchars($_POST['username']);
+    $telepon = htmlspecialchars($_POST['telepon']);
+    $alamat = htmlspecialchars($_POST['alamat']);
+
+    $simpan = $conn->query("INSERT INTO anggota VALUES (NULL, '$nama', '$username', '$telepon', '$alamat')");
+
+    if ($simpan) {
+        $swal = 1;
+        echo '<script>
+        setInterval(function () {
+            window.location.href="index.php"
+        }, 1000);
+    </script>';
+    } else {
+        $fail = 1;
+        echo '<script>
+        setInterval(function () {
+            window.location.href="index.php"
+        }, 1000);
+    </script>';
+    }
+}
 
 
 
-// $swal = 1;
-// echo '<script>
-//         setInterval(function () {
-//             window.location.href="input.php"
-//         }, 1000);
-//     </script>';
+
 
 // $del = 1;
 // echo '<script>
@@ -119,6 +140,16 @@ $conn = mysqli_connect('localhost', 'root', '', 'crudlog');
             </script>";
     }
     if (isset($del)) {
+        echo "<script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Menghapus Data',
+            showConfirmButton: false,
+            timer: 1500
+          })
+            </script>";
+    }
+    if (isset($fail)) {
         echo "<script>
         Swal.fire({
             icon: 'success',

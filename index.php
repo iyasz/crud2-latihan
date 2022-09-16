@@ -29,6 +29,20 @@ if (isset($_POST['submit'])) {
     }
 }
 
+if(isset($_POST['delete'])){
+    $id = htmlspecialchars($_POST['id']);
+
+    $delete = $conn->query("DELETE FROM anggota where id = '$id' ");
+    if($delete){
+        $del = 1;
+        echo '<script>
+        setInterval(function () {
+            window.location.href="index.php"
+        }, 1000);
+    </script>';
+    }
+}
+
 
 
 
@@ -114,7 +128,7 @@ if (isset($_POST['submit'])) {
                                         <td class=" d-flex gap-1 justify-content-center">
                                             <a href="edit.php?id=<?= $selects['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                                             <form action="" method="post">
-                                                <input type="hidden" name="id" value="<?= $selects['id'] ?>">
+                                                <input type="hidden" name="id" value="<?= $select['id'] ?>">
                                                 <button type="submit" name="delete" class="btn btn-danger btn-sm">delete</button>
                                             </form>
                                         </td>

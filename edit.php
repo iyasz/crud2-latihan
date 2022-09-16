@@ -19,12 +19,12 @@ if (isset($_POST['submit'])) {
 
     if ($update) {
         echo "<script>alert('Update Berhasil');</script>";
-        echo "<script>location.replace('input.php');</script>";
     } else {
         echo "<script>alert('Update Gagal');</script>";
     }
 }
 
+// echo "<script>location.replace('input.php');</script>";
 
 
 ?>

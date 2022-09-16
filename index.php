@@ -2,48 +2,22 @@
 
 $conn = mysqli_connect('localhost', 'root', '', 'crudlog');
 
-$select = $conn->query("SELECT * FROM anggota");
 
-if (isset($_POST['submit'])) {
-    $nama = htmlspecialchars($_POST['nama']);
-    $username = htmlspecialchars($_POST['username']);
-    $telepon = htmlspecialchars($_POST['telepon']);
-    $alamat = htmlspecialchars($_POST['alamat']);
 
-    $simpan = $conn->query("INSERT INTO anggota VALUES  (NULL, '$nama', '$username', '$telepon', '$alamat')");
-    if ($simpan) {
-        $swal = 1;
-        echo '<script>
-                setInterval(function () {
-                    window.location.href="input.php"
-                }, 1000);
-            </script>';
-        // echo "<script>location.replace('');</script>";
-    } else {
-        echo "<script>Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 1500
-          })</script>";
-    }
-}
-if (isset($_POST['delete'])) {
-    $id = htmlspecialchars($_POST['id']);
-    $delete = $conn->query("DELETE FROM anggota WHERE id = '$id'");
-    if ($delete) {
-        $del = 1;
-        echo '<script>
-                setInterval(function () {
-                    window.location.href="input.php"
-                }, 1000);
-            </script>';
-    } else {
-        echo "<script>alert('Data Gagal Di hapus');</script>";
-    }
-}
 
+// $swal = 1;
+// echo '<script>
+//         setInterval(function () {
+//             window.location.href="input.php"
+//         }, 1000);
+//     </script>';
+
+// $del = 1;
+// echo '<script>
+//         setInterval(function () {
+//             window.location.href="input.php"
+//         }, 1000);
+//     </script>';
 ?>
 
 <!doctype html>

@@ -2,27 +2,6 @@
 
 $conn = mysqli_connect('localhost', 'root', '', 'crudlog');
 
-$id = $_GET['id'];
-
-$datas = $conn->query("SELECT * FROM anggota WHERE id = '$id'");
-
-$data = mysqli_fetch_assoc($datas);
-
-if (isset($_POST['submit'])) {
-
-    $nama = htmlspecialchars($_POST['nama']);
-    $username = htmlspecialchars($_POST['username']);
-    $telepon = htmlspecialchars($_POST['telepon']);
-    $alamat = htmlspecialchars($_POST['alamat']);
-
-    $update = $conn->query("UPDATE anggota SET nama = '$nama', username = '$username', telepon = '$telepon', alamat = '$alamat' WHERE id = '$id'");
-
-    if ($update) {
-        echo "<script>alert('Update Berhasil');</script>";
-    } else {
-        echo "<script>alert('Update Gagal');</script>";
-    }
-}
 
 // echo "<script>location.replace('input.php');</script>";
 
